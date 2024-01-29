@@ -6,7 +6,9 @@ import './App.css'
 
 function App() {
 
-
+  const handleOnsubmit = (texto: string) => {
+    console.log("Texto desde el padre",texto)
+  }
 
 
   return (
@@ -17,7 +19,7 @@ function App() {
         Ingrese sus actividades
       </p>
      
-      <Ingreso />
+      <Ingreso admensaje={handleOnsubmit}   />
       
     </>
   )

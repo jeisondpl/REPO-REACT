@@ -1,23 +1,27 @@
-import { useState } from "react";
-function Input() {
-    const [texto, setTexto] = useState('');
+import { useState } from 'react'
 
-    function admensaje() {
-        console.log('clic con boton '+ texto);
-    }
+interface Props {
+  admensaje: (texto: string) => void
+}
+
+function Input({ admensaje }: Props) {
  
-    return (
-    
-        <div>
-          <input type="text"
-          placeholder="ingresa una actividad" 
-          name='actividadtxt'
-          onChange={ev =>setTexto(ev.target.value)}>
-          </input>
-          <button onClick={admensaje}>agregar</button>
-        </div>
+ 
+  const [texto, setTexto] = useState('')
+
+ 
+  return (
+    <div>
+      <input 
+      value={texto}
+      type='text' 
+      placeholder='ingresa una actividad' 
+      name='actividadtxt' 
+      onChange={(ev) => setTexto(ev.target.value)}/>
       
-    )
-  }
-  
-  export default Input
+      <button onClick={() => admensaje(texto)}>agregar</button>
+    </div>
+  )
+}
+
+export default Input
